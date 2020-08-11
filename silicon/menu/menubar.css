@@ -1,0 +1,85 @@
+
+
+#menuwrapper {
+	border-top: 1px solid #800000; /*按鈕上下面的邊線顏色和寬度*/
+	border-bottom: 1px solid #800000; /*按鈕列下面的邊線顏色和寬度*/
+	background-color: #35452E;
+	background-image: url(images/mbar_bg.jpg);  /*按鈕列的背景圖950*48*/
+}
+
+.clearit {
+	clear: both; /*消除左邊及右邊的浮動屬性*/
+	height: 0;
+	line-height: 0.0;
+	font-size: 0;
+}
+
+/*--------------------------------------------------------*/
+#menubar, #menubar ul {
+	padding: 0;
+	margin: 0;
+	list-style: none; /*設定清單前是否要有項目符號*/
+	font-family: 標楷體, "Microsoft JhengHei","PMingLiU",Arial, Helvetica, sans-serif;/*微軟正黑體，新細明體...*/
+}
+
+/*--------------------------------------------------------*/
+#menubar a {
+	display: block; /*元素會以區塊方式呈現*/
+	text-decoration: none;
+	padding: 5px 10px 5px 10px;/*主選單邊框的顏色*/
+	font-size: 1em;
+	color: #00C;/*主選單文字的顏色*/
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #009;
+}
+
+/*--------------------------------------------------------*/
+#menubar li {
+	float: left;  /*主選單靠左排列*/
+	width: 9em;   
+}
+
+/*--------------------------------------------------------*/
+#menubar li:hover a, #menubar a:focus,
+#menubar a:active {
+	color: #ffffff;/*滑鼠移過時,主選單文字顏色*/
+	background-color: #006;/*滑鼠移過時,主選單的底色*/
+}
+
+/*--------------------------------------------------------*/
+#menubar li ul , #menubar ul li {
+	width: 12em;  /*子選單的寬度*/
+}
+ 
+#menubar ul li a  {
+	border-right: 0;
+	padding: 3px 12px 3px 16px; /*每個單一子選單的內邊界*/
+}
+
+#menubar li ul {
+	position: absolute; /*相對於它的父元素進行定位*/
+	display: none;
+	background-color: #FFFFFF; /*子選單背景顏色;*/
+	opacity: 0.8;/*設定透明效果-1完全不透明*/
+	border-right:1px solid #333333;  /*整個子選單的右邊框顏色*/
+	border-bottom: 1px solid #333333;  /*整個子選單的下邊框顏色*/
+}
+
+/*--------------------------------------------------------*/
+
+#menubar li:hover ul {
+	display: block;
+}
+
+#menubar li:hover ul a {
+	color: #000000;/* 滑鼠移過時,子選單文字顏色  */
+	background-color: transparent;  /*滑鼠移過整個子選單背景顏色*/
+}
+
+#menubar ul a:hover {
+	background-color: #000099 !important; /*子選單被選到時的底色*/
+	color: #ffffff!important;/*子選單被選到時的文字顏色*/
+}
+
+#menubar li {width: auto;}

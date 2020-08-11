@@ -1,0 +1,158 @@
+
+
+@charset "utf-8"; /*設定萬國碼*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+}
+/* margin：框線外側與外面物件的距離
+   border：模組方塊的框線，可以指定粗細、顏色、樣式
+   padding：框線內側與內容之間的距離
+   outline：輪廓*/
+
+body {
+	font-size: 30px; /* 1em=16px */
+	color: #000;
+	font-family: 標楷體, Arial, "Times New Roman",Helvetica, sans-serif; 
+	/*當瀏覽器沒有第一種字型的時候，會自動顯示下一種字型，字型太長有空白時要加""　*/
+	margin: 0px;
+	padding: 0px;
+	background-color: #796159; /*背景顏色,有背景圖就不會顯示*/	
+	background-image: url('images/background.gif');  /*背景底圖(小四方塊，填滿整個背景)*/
+	/*background-repeat: repeat-x;*/  /*如果是一張長形的，可加這一行，只向右邊填滿，不會向下填*/
+}
+
+body img {
+	border: 0px;  /*圖的邊框*/
+	text-decoration: none;
+}
+
+h1, h2, h3 {
+	background-color: inherit;   /*繼承上層的屬性值*/
+	color: navy; /*標題文字的顏色*/
+	font-family: 標楷體, Georgia, Times, serif; 
+}
+
+h1 {
+	font-size: 200%; /*1號標題的大小*/
+}
+
+h2 {
+	font-size: 130%;  /*2號標題的大小*/
+}
+
+h3 {
+	font-size: 100%;  /*3號標題的大小*/
+}
+
+
+/* 還沒按過的超連結設定 */
+a, a:link {
+	color: #884C1A;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* 按過的超連結設定 */
+a:visited {
+	color: #006600;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* 滑鼠移過時的超連結設定 */
+a:hover {
+	text-decoration: underline;
+}
+
+/*內容---------------------------------------------------------------------------------------*/
+#outerWrapper {
+	background-color: #fff;/*內容的底色,目前是白色,也可以用其他顏色或圖片*/
+	width: 80%;
+	text-align: left; /* 文字的對齊 */;
+	max-width: 1024px;  /* outerwrapper最大寬度 */
+	margin: 0px auto; /* 代表上下間隔為0px，左右間隔根據寬度調整 */
+	
+}
+/*上標(網站名稱)-------------------------------------------------------------------------------*/
+#outerWrapper #sitename {
+	height: 50px;
+	border-bottom: solid 1px #80000; /* 底下的線的寬度和顏色 */
+	color: #000099;/*最上面的文字顏色*/
+	text-align: center;
+	background-image: url('images/upline.jpg');/*最上面的圖1024*40,也可以用background-color  */
+	background-repeat: repeat-x;
+	font-size: 50px;
+}
+
+/*主題圖片設定---------------------------------------------------------------------------------------*/
+#outerWrapper #header {
+	background-position: center top;
+	background-color: #415539;
+/*	padding: 10px 10px 10px 10px;*/
+	border-bottom: solid 1px #415539; /*圖片下方邊線的寬度和顏色*/
+	background-image: url('images/mainimage.jpg'); /* 主題圖片 1024*150 */
+	height: 150px; /*主題圖片的高度*/
+	background-repeat: no-repeat; /*背景不重複*/
+}
+
+/*---------------------------------------------------------------------------------------*/
+#outerWrapper #contentWrapper #content {
+	padding: 10px 10px 10px 10px; /*設定文字和內邊界的距離*/
+	margin: 0px;
+}
+
+/*註腳-----------------------------------------------------------------------------------*/
+#outerWrapper #footer {
+	border-radius: inherit;
+	padding: 5px;
+	border-top: 2px solid #44583A;  /*註腳上邊線的寬度和顏色*/
+	background-color: #ffffff;
+	text-align: center;
+	font-size: small;
+}
+#outerWrapper #footer p {
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+
+
+/*內文圖片設定-------------------------------------------------------*/
+.imglft {
+	float: left;
+	padding: 5px;
+}
+.imgrgt {
+	float: right;
+	padding: 5px;
+}
+.imgcenter {
+  display:block;
+  margin: auto;
+  /* max-width: 500px; 建議可加上「最大寬度」讓圖片不會過大。500px只是一個例子*/
+}
+
+.center {
+	 text-align:center;
+}
+
+.english {
+	font-family: Helvetica, sans-serif;
+	background-color: #fff;/*內容的底色,目前是白色,也可以用其他顏色或圖片*/
+	width: 80%;
+	text-align: left; /* 文字的對齊 */;
+	max-width: 1024px;  /* outerwrapper最大寬度 */
+	margin: 0px auto;
+}
+
+#h2c {
+	background-color: inherit;   /*繼承上層的屬性值*/
+	color: black; /*標題文字的顏色*/
+	font-family: 標楷體, Georgia, Times, serif; 
+	font-size: 80%;
+	text-align:center;
+}
