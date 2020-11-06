@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="question">
+        <h1>加權平均計算系統</h1>
+        <h2>僅適用於八年級 本系統不會紀錄成績</h2>
+    </div>
+    <div class=lit-input>
+        <p>英文成績: <input type="number" id='lit'></p>
+    </div>
+    <div class=chi-input>
+        <p>國文成績: <input type="number" id='chi'></p>
+    </div>
+    <div class=math-input>
+        <p>數學成績: <input type="number" id='math'></p>
+    </div>
+    <div class=geo-input>
+        <p>地理成績: <input type="number" id='geo'></p>
+    </div>
+    <div class=phy-input>
+        <p>理化成績: <input type="number" id='phy'></p>
+    </div>
+    <div class='button'>
+        <button onclick="calculate()">計算</button>
+    </div>
+    <div class='answer'>
+        <p>你的加權平均成績是
+        <h2 id='display'></h2>
+        </p>
+
+        <script>
+            function calculate() {
+                var lit = document.getElementById('lit').value * 6;
+                var chi = document.getElementById('chi').value * 5;
+                var math = document.getElementById('math').value * 6;
+                var geo = document.getElementById('geo').value * 5;
+                var phy = document.getElementById('phy').value * 6;
+                if (lit > 600 || chi > 500 || math > 600 || geo > 500 || phy > 600) {
+                    var display = "請輸入低於100的數"
+                }
+                else {
+                    var display = (lit + chi + math + geo + phy) / 28;
+                }
+                document.getElementById('display').innerHTML = display;
+            }
+        </script>
+</body>
+
+</html>
