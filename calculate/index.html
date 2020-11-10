@@ -27,9 +27,6 @@
     <div class=phy-input>
         <p>理化成績: <input type="number" id='phy'></p>
     </div>
-    <div class="ig-input">
-        <p>IG 成績: <input type="number" id='ig'></p>
-    </div>
     <div class='button'>
         <button onclick="calculate()">計算</button>
     </div>
@@ -45,12 +42,11 @@
             var math = document.getElementById('math').value * 6;
             var geo = document.getElementById('geo').value * 5;
             var phy = document.getElementById('phy').value * 6;
-            var ig = document.getElementById('ig').value * 2;
-            if (lit > 600 || chi > 500 || math > 600 || geo > 500 || phy > 600 || ig > 200) {
+            if (lit > 600 || chi > 500 || math > 600 || geo > 500 || phy > 600) {
                 var display = "請輸入低於100的數"
             }
             else {
-                var display = (lit + chi + math + geo + phy + ig) / 30;
+                var display = (lit + chi + math + geo + phy) / 28;
             }
             document.getElementById('display').innerHTML = display;
         }
