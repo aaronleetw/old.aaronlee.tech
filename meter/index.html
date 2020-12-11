@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Meter System</title>
+</head>
+
+<body>
+    <div class="question">
+        <h1>Love Meter System</h1>
+    </div>
+    <div class=one-input>
+        <p>第一人: <input type="text" id='one'></p>
+    </div>
+    <div class=two-input>
+        <p>第二人: <input type="text" id='two'></p>
+    </div>
+    <div class='button'>
+        <button onclick="calculate()">計算</button>
+    </div>
+    <div class='answer'>
+        <p>結果:
+        <h2 id='display'></h2>
+        </p>
+    </div>
+    <script>
+        function calculate() {
+            document.getElementById('display').innerHTML = Math.floor(Math.random() * 101) + "%";
+        }
+    </script>
+</body>
+
+</html>
