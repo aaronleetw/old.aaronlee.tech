@@ -12,29 +12,31 @@
         <h1>加權平均計算系統</h1>
         <h2>僅適用於雙語八年級 本系統不會紀錄成績</h2>
     </div>
-    <div class=lit-input>
-        <p>英文成績: <input type="number" id='lit'></p>
-    </div>
-    <div class=chi-input>
-        <p>國文成績: <input type="number" id='chi'></p>
-    </div>
-    <div class=math-input>
-        <p>數學成績: <input type="number" id='math'></p>
-    </div>
-    <div class=geo-input>
-        <p>地理成績: <input type="number" id='geo'></p>
-    </div>
-    <div class=phy-input>
-        <p>理化成績: <input type="number" id='phy'></p>
-    </div>
-    <div class='button'>
-        <button onclick="calculate()">計算</button>
-    </div>
-    <div class='answer'>
-        <p>你的加權平均成績是
-        <h2 id='display'></h2>
-        </p>
-    </div>
+    <form onsubmit="return calculate()">
+        <div class=lit-input>
+            <p>英文成績: <input type="number" id='lit'></p>
+        </div>
+        <div class=chi-input>
+            <p>國文成績: <input type="number" id='chi'></p>
+        </div>
+        <div class=math-input>
+            <p>數學成績: <input type="number" id='math'></p>
+        </div>
+        <div class=geo-input>
+            <p>地理成績: <input type="number" id='geo'></p>
+        </div>
+        <div class=phy-input>
+            <p>理化成績: <input type="number" id='phy'></p>
+        </div>
+        <div class='button'>
+            <button onclick="calculate()">計算</button>
+        </div>
+        <div class='answer'>
+            <p>你的加權平均成績是
+            <h2 id='display'></h2>
+            </p>
+        </div>
+    </form>
     <script>
         function calculate() {
             var lit = document.getElementById('lit').value * 6;
@@ -49,6 +51,7 @@
                 var display = (lit + chi + math + geo + phy) / 28;
             }
             document.getElementById('display').innerHTML = display;
+            return false;
         }
     </script>
 </body>
