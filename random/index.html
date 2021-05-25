@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <title>Random Generator 亂數產生器</title>
+    <link rel="icon" href="../img/epic.png">
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./random.css">
+</head>
+
+<body>
+    <h1>Random Generator 亂數產生器</h1>
+    <h4><a href="./zh.html">中文</a> &emsp; <a href="./">English</a></h4>
+    <div id="listSelContainer" class="flex-container">
+        <div class="flex-child">
+            <label for="listSel">List: </label>
+        </div>
+        <div class="flex-child">
+            <select id="listSel" name="listSel" onchange="return changeType()" class="custom-select">
+                <option value="8p">8 Ping</option>
+                <option value="customize">Customize List</option>
+            </select>
+        </div>
+    </div>
+    <div id="customizeMenu" style="display: none;">
+        <div class="flex-container">
+            <div class="flex-child">
+                <label for="startVal">Start Value: </label>
+            </div>
+            <div class="flex-child">
+                <input id="startVal" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-child">
+                <label for="endVal">End Value: </label>
+            </div>
+            <div class="flex-child">
+                <input id="endVal" type="text" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div id="modeSelContainer" class="flex-container">
+        <div class="flex-child">
+            <label for="modeSel">Mode: </label>
+        </div>
+        <div class="flex-child">
+            <select id="modeSel" name="modeSel" onchange="return changeMode()" class="custom-select">
+                <option value="single">Single number</option>
+                <option value="wholeList">Whole list</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="intervalMenu" class="flex-container" style="display:none;">
+        <div class="flex-child">
+            <label for="intervalInput">Numbers per row: </label>
+        </div>
+        <div class="flex-child">
+            <input id="intervalInput" type="text" class="form-control" value="10">
+        </div>
+    </div>
+
+    <br>
+
+    <button style="margin-top: 15px;" class="btn btn-primary" onclick="return createRandom()">Generate</button>
+
+    <h2 id="result" style="margin-top: 10px;"></h2>
+    <footer>
+        <hr>
+        Created by Aaron Lee.
+        <br>
+        All client-side JavaScript code. This does not process through a server.
+    </footer>
+    <script src="./random.js"></script>
+</body>
+
+</html>
