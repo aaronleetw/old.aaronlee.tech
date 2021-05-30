@@ -3,7 +3,7 @@ var idU;
 var guessTimes = 0;
 var gameCode;
 var answer;
-var host_client; // true: client  |   false: host //
+var host_client = 0; // true: client  |   false: host //
 var get = {
     "async": true,
     "crossDomain": true,
@@ -64,7 +64,7 @@ function initGame(ans) {
     answer = ans.toString(); guessTimes = 0;
     document.getElementById("game").innerHTML = "Game " + gameCode.toString() + " started.";
     document.getElementById("guessTimesView").innerHTML = "Guess Times: 0";
-    document.getElementById("sneakpeek").innerHTML = "sneakpeek answer: " + answer.toString();
+    // document.getElementById("sneakpeek").innerHTML = "sneakpeek answer: " + answer.toString();
     document.getElementById("guessOptionsMenu").style.display = "block";
     document.getElementById("waitingForClient").style.display = "none";
     document.getElementById("startSessionMenu").style.display = "none";
@@ -78,7 +78,8 @@ function finishGame() {
 }
 
 function getAndUpdateDB(win) {
-    if (host_client) {
+    if (host_client == 3) return;
+    else if (host_client == 1) {
         // CLIENT //
         $.ajax(get).done(function (response) {
             for (var i = 0; i < response.length; i++) {
@@ -91,14 +92,24 @@ function getAndUpdateDB(win) {
                         console.log("PUT_CLIENTGUESS: ");
                         console.log(responsePUT);
                         try {
-                            if (resVal['hostWin'] == true && resVal['hostGuess'] < guessTimes) document.getElementById("result").innerHTML = "You Lost!";
-                            else if (resVal['clientWin'] == true && guessTimes < resVal['hostGuess']) document.getElementById("result").innerHTML = "You Win!";
+                            if (resVal['hostWin'] == true && resVal['hostGuess'] < guessTimes) {
+                                document.getElementById("result").innerHTML = "You Lost!";
+                                document.getElementById("guessOptionsMenu").style.display = "none";
+                                document.getElementById("waitingForFinish").style.display = "none";
+                            }
+                            else if (resVal['clientWin'] == true && guessTimes < resVal['hostGuess']) {
+                                document.getElementById("result").innerHTML = "You Win!";
+                                document.getElementById("guessOptionsMenu").style.display = "none";
+                                document.getElementById("waitingForFinish").style.display = "none";
+                            }
                             else if (resVal['hostWin'] == true && resVal['clientWin'] == true) {
                                 if (resVal['hostGuess'] > resVal['clientGuess'])
                                     document.getElementById("result").innerHTML = "You Win!";
                                 else if (resVal['clientGuess'] > resVal['hostGuess'])
                                     document.getElementById("result").innerHTML = "You Lost!";
                                 else document.getElementById("result").innerHTML = "Draw";
+                                document.getElementById("guessOptionsMenu").style.display = "none";
+                                document.getElementById("waitingForFinish").style.display = "none";
                             }
                         } catch { }
                     });
@@ -118,14 +129,24 @@ function getAndUpdateDB(win) {
                         console.log("PUT_HOSTGUESS: ");
                         console.log(responsePUT);
                         try {
-                            if (resVal['clientWin'] == true && resVal['clientGuess'] < guessTimes) document.getElementById("result").innerHTML = "You Lost!";
-                            else if (resVal['hostWin'] == true && guessTimes < resVal['clientGuess']) document.getElementById("result").innerHTML = "You Win!";
+                            if (resVal['clientWin'] == true && resVal['clientGuess'] < guessTimes) {
+                                document.getElementById("result").innerHTML = "You Lost!";
+                                document.getElementById("guessOptionsMenu").style.display = "none";
+                                document.getElementById("waitingForFinish").style.display = "none";
+                            }
+                            else if (resVal['hostWin'] == true && guessTimes < resVal['clientGuess']) {
+                                document.getElementById("result").innerHTML = "You Win!";
+                                document.getElementById("guessOptionsMenu").style.display = "none";
+                                document.getElementById("waitingForFinish").style.display = "none";
+                            }
                             else if (resVal['hostWin'] == true && resVal['clientWin'] == true) {
                                 if (resVal['hostGuess'] > resVal['clientGuess'])
                                     document.getElementById("result").innerHTML = "You Lost!";
                                 else if (resVal['clientGuess'] > resVal['hostGuess'])
                                     document.getElementById("result").innerHTML = "You Win!";
                                 else document.getElementById("result").innerHTML = "Draw";
+                                document.getElementById("guessOptionsMenu").style.display = "none";
+                                document.getElementById("waitingForFinish").style.display = "none";
                             }
                         } catch { }
                     });
@@ -202,7 +223,7 @@ function JoinGame() {
                 console.log("_id:" + responseVal._id + "\nresponseVal:" + JSON.stringify(responseVal));
                 $.ajax(put(responseVal._id, responseVal)).done(function (responsePut) {
                     idU = responseVal._id;
-                    host_client = true;
+                    host_client = 1;
                     initGame(responsePut.hostVal);
                 });
                 break;
@@ -217,10 +238,28 @@ function CreateNewGame() {
     if (!evalAns(ans)) { document.getElementById("result").innerHTML = "Invalid Answer"; return; }
     $.ajax(post({ "hostVal": parseInt(ans), "startGame": false })).done(function (response) {
         idU = response._id;
-        host_client = false;
+        host_client = 0;
         document.getElementById("game").innerHTML = "Created Game " + response.gameCode + ".";
         gameCode = response.gameCode;
         document.getElementById("startSessionMenu").style.display = "none";
         document.getElementById("waitingForClient").style.display = "block";
     });
+}
+
+function chooseAns() {
+    var lot = [1, 2, 3, 4, 5, 6, 7, 8, 9], ans = [];
+    for (var i = 0; i < 4; i++) {
+        let tmp = Math.floor(Math.random() * lot.length);
+        ans.push(lot[tmp]);
+        lot.splice(tmp, 1);
+    }
+    return (ans[0] * 1000) + (ans[1] * 100) + (ans[2] * 10) + ans[3];
+}
+
+function PlayWithComputer() {
+    let ans = chooseAns();
+    host_client = 3;
+    gameCode = 0;
+    console.log(ans);
+    initGame(ans);
 }
