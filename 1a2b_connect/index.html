@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>1A2B CONNECT</title>
+    <link rel="icon" href="../img/epic.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../random/random.css">
+</head>
+
+<body>
+    <h1>1A2B CONNECT</h1>
+    <h2 id="game"></h2>
+    <h2 id="guessTimesView"></h2>
+    <!-- <h4><a href="./zh.html">中文</a> &emsp; <a href="./">English</a></h4> -->
+    <div id="startSessionMenu" style="display: block;">
+        <div id="gameCodeMenu" class="flex-container">
+            <div class="flex-child">
+                <label for="gameCode">Gamecode: </label>
+            </div>
+            <div class="flex-child">
+                <input id="gameCode" type="text" class="form-control">
+            </div>
+        </div>
+        <div id="yourAnswerMenu" class="flex-container">
+            <div class="flex-child">
+                <label for="yourAnswer">Your Answer: </label>
+            </div>
+            <div class="flex-child">
+                <input id="yourAnswer" type="text" class="form-control">
+            </div>
+        </div>
+        <button style="margin-top: 15px;" class="btn btn-primary" onclick="return CreateNewGame()">New Game</button>
+        <button style="margin-top: 15px;" class="btn btn-primary" onclick="return JoinGame()">Join Game</button>
+        <button style="margin-top: 15px;" class="btn btn-primary"
+            onclick="gameCode = 9999; host_client = true; return initGame(1234)">DEBUG</button>
+    </div>
+
+    <div id="waitingForClient" style="display:none;">
+        <h2>Waiting for player...</h2>
+        <button style="margin-top: 15px;" class="btn btn-primary" onclick="return Refresh()">Refresh</button>
+    </div>
+
+    <div id="waitingForFinish" style="display:none;">
+        <h3>Waiting for player to finish...</h3>
+        <button style="margin-top: 15px;" class="btn btn-primary" onclick="return getAndUpdateDB(true)">Refresh</button>
+    </div>
+
+    <div id="guessOptionsMenu" style="display: none;">
+        <div id="guessMenu" class="flex-container">
+            <div class="flex-child">
+                <label for="yourGuess">Your Guess: </label>
+            </div>
+            <div class="flex-child">
+                <input id="yourGuess" type="text" class="form-control">
+            </div>
+        </div>
+        <button style="margin-top: 15px;" class="btn btn-primary" onclick="return Guess()">Guess!</button>
+    </div>
+
+    <h2 id="result" style="margin-top: 10px;"></h2>
+    <h2 id="sneakpeek" style="margin-top: 10px;"></h2>
+    <footer>
+        <hr>
+        Created by Aaron Lee.
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./game.js"></script>
+</body>
+
+</html>
