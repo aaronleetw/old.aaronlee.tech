@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>QRcode Generator</title>
+    <link rel="icon" href="../img/epic.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/project.css">
+</head>
+
+<body>
+    <h1>QRcode Generator</h1>
+
+    <div class="flex-container">
+        <div class="flex-child">
+            <label for="value">Value: </label>
+        </div>
+        <div class="flex-child">
+            <input id="value" type="text" class="form-control" onchange="return newImage()" value="Example">
+        </div>
+    </div>
+    <br>
+    <img id="showimage" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Example" alt=""
+        style="margin: auto;">
+
+
+    <footer>
+        <hr>
+        Created by Aaron Lee.
+        <br>
+        Powered by the <a href="http://goqr.me">goqr.me</a> API.
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function newImage() {
+            let val = document.getElementById("value").value;
+            document.getElementById("showimage").src = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" + val;
+        }
+    </script>
+</body>
+
+</html>
