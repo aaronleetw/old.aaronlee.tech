@@ -33,10 +33,8 @@ function showHide_Interval() {
 function getList() {
     var list = [];
     if (listSel == 8) {
-        for (var i = 0; i < 24; i++) list.push(i + 1);
-        for (var i = 25; i < 30; i++) list.push(i + 1);
-        list.push(32);
-        list.push(33);
+        for (var i = 0; i < 7; i++) list.push(i + 1);
+        for (var i = 8; i < 34; i++) list.push(i + 1);
     } else if (listSel == 0) {
         var startVal = document.getElementById("startVal").value;
         var endVal = document.getElementById("endVal").value;
