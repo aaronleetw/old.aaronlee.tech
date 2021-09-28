@@ -11,6 +11,7 @@ function changeType() {
     let e = document.getElementById("listSel");
     let v = e.value;
     if (v == "8p") listSel = 8;
+    if (v == "9h") listSel = 9;
     else listSel = 0;
     showHide_Customize();
 }
