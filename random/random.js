@@ -1,4 +1,4 @@
-var listSel = 8; // 8:8Ping   |  0:customize //
+var listSel = 8; // 8: 9P 9: 9 H   |  0:customize //
 var modeSel = 1; // 1:Single  |  0:wholeList //
 function changeMode() {
     var e = document.getElementById("modeSel");
@@ -32,9 +32,13 @@ function showHide_Interval() {
 }
 function getList() {
     var list = [];
-    if (listSel == 8) {
-        for (var i = 0; i < 7; i++) list.push(i + 1);
-        for (var i = 8; i < 34; i++) list.push(i + 1);
+    if (listSel == 9) {
+        for (var i = 0; i < 5; i++) list.push(i + 1);
+        for (var i = 6; i < 15; i++) list.push (i + 1);
+        for (var i = 16; i < 32; i++) list.push(i + 1);
+    } else if (listSel == 8) {
+        for (var i = 0; i < 7; i++) list.push(i+1);
+        for (var i = 8; i < 34; i++) list.push(i+1);
     } else if (listSel == 0) {
         var startVal = document.getElementById("startVal").value;
         var endVal = document.getElementById("endVal").value;
